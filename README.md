@@ -157,6 +157,27 @@ font-size script, but either directly with urxvt or some other component that
 may interfere (like for example a window manager). Please report the bug to
 those projects in that case.
 
+fullscreen
+----------
+Author:  Christopher Luna  
+License: GPLv3  
+URL:     https://aur.archlinux.org/packages/urxvt-fullscreen
+
+Use keyboard shortcut to toggle fullscreen.
+
+After installing, enable the extension by adding the following line in your
+`~/.Xresources`:
+
+```
+URxvt.perl-ext-common: ...,fullscreen
+```
+
+Then add a keybinding:
+
+```
+URxvt.keysym.F11: perl:fullscreen:switch
+```
+
 keyboard-select
 ---------------
 Author:  Bert Muennich  
