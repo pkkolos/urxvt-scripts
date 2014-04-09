@@ -79,7 +79,7 @@ sub paste_escaped {
 
 	my $str = `$self->{paste_cmd}`;
 	if ($? == 0) {
-		$str =~ s/([!#\$%&\*\(\) ='"\\\|\[\]`~,<>\?])/$1/g;
+		$str =~ s/([!#\$%&\*\(\) ='"\\\|\[\]`~,<>\?])/\\$1/g;
 		$self->tt_paste($str);
 	} else {
 		print STDERR "error running '$self->{paste_cmd}': $!\n";
