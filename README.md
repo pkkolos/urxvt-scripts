@@ -262,3 +262,18 @@ Options:
 
 For compatibility reasons, url-select will also use any patterns defined for the
 matcher extension by reading all `URxvt.matcher.pattern.[0-9]` resources.
+
+vtwheel
+-------
+Author:  PyroPeter  
+License: Unknown  
+URL: https://aur.archlinux.org/packages/urxvt-vtwheel
+
+Scroll wheel support.
+
+After installing, enable the extension by adding the following line in your
+`~/.Xresources`:
+
+```
+URxvt.perl-ext-common: ...,vtwheel
+```
