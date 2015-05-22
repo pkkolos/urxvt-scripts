@@ -103,6 +103,15 @@ URxvt.perl-ext-common: ...,font-size
 Then add some keybindings:
 
 ```
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+```
+
+Note that for urxvt versions older than 9.21 the resources have to look like this:
+
+```
 URxvt.keysym.C-Up:     perl:font-size:increase
 URxvt.keysym.C-Down:   perl:font-size:decrease
 URxvt.keysym.C-S-Up:   perl:font-size:incglobal
