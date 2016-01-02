@@ -23,6 +23,13 @@ Author:  Bert Muennich
 License: GPLv2  
 URL:     http://www.github.com/muennich/urxvt-perls
 
+**DEPRECATED**
+
+Since version 9.20 rxvt-unicode natively supports copying to and pasting from
+the CLIPBOARD buffer with the `Ctrl-Meta-c` and `Ctrl-Meta-v` key bindings. The
+`clipboard.autocopy` setting is provided by the `selection_to_clipboard`
+extension shipped with rxvt-unicode.
+
 Use keyboard shortcuts to copy the selection to the clipboard and to paste the
 clipboard contents (optionally escaping all special characters).
 
