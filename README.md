@@ -179,6 +179,10 @@ Use Meta-Escape to activate selection mode, then use the following keys:
 -   `Y`: Copy selected lines to primary buffer or cursor line and quit
 -   `q`/`Escape`: Quit keyboard selection mode
 
+Options:
+
+    URxvt.keyboard-select.clipboard: If true, copy to clipboard too
+
 vtwheel
 -------
 Author:  PyroPeter  
