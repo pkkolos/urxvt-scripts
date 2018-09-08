@@ -1,48 +1,43 @@
 #!/usr/bin/perl
 
+=head1 NAME
+
+vtwheel - emulate scroll wheel for secondary screen
+
+=head1 DESCRIPTION
+
+Emulate scroll wheel on secondary screen by simulating key presses.
+
+=cut
+
 use strict;
 use warnings;
 
-# Implements a scrollwheel just like in good old vt100's mices
+my $scroll_lines = 3;
+my $key_scroll_up = 111;
+my $key_scroll_down = 116;
 
 sub simulate_keypress {
-    my ($self, $type) = @_; #type: 0:up, 1:down
+    my ($self, $keycode) = @_;
 
-    my $keycode_up = 111;
-    my $keycode_down = 116;
-
-    my $numlines = 3;
-
-    my $keycode = 0;
-    if ($type eq 0) {
-        $keycode = $keycode_up;
-    } elsif ($type eq 1) {
-        $keycode = $keycode_down;
-    } else {
-        return;
-    }
-
-    for (my $i = 0 ; $i ne $numlines ; $i++) {
-        $self->key_press(0,$keycode);
-        $self->key_release(0,$keycode);
+    for (my $i = 0; $i < $scroll_lines; $i++) {
+        $self->key_press(0, $keycode);
+        $self->key_release(0, $keycode);
     }
 }
 
 sub on_button_release {
     my ($self, $event) = @_;
 
-    #my $res_ss = $self->resource("secondaryScroll");
-    #warn("ressource ss is <$res_ss>");
-
+    # Don't change scrolling on primary screen
     !$self->current_screen and return ();
 
-    #warn("foo, event: <$event->{button}>\n");
-    if ($event->{button} eq "4") { # scroll up
-        $self->simulate_keypress(0);
-		return 1;
-    } elsif ($event->{button} eq "5") { # scroll down
-        $self->simulate_keypress(1);
-		return 1;
+    if ($event->{button} eq "4") {
+        $self->simulate_keypress($key_scroll_up);
+        return 1;
+    } elsif ($event->{button} eq "5") {
+        $self->simulate_keypress($key_scroll_down);
+        return 1;
     }
 
     return ();
